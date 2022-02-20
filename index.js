@@ -2,6 +2,11 @@ const express = require('express');// requiring express to make the files as sca
 const app = express();
 const port = 8000;
 console.log('1');
+const expressLayouts = require('express-ejs-layouts');
+app.use(expressLayouts);// using express layouts
+app.set('layout extractStyles',true);//setting up the styles true for different pages
+app.set('layout extractScripts',true);//setting up the scripts true for different pages
+//after doing the above mentioned , now we can use different sttic file in our layouts
 
 // acquiring controllers so that to use them in different cases
 app.use(express.urlencoded({
