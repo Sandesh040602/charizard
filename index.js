@@ -1,15 +1,23 @@
 const express = require('express');// requiring express to make the files as scattered as possible
 const app = express();
 const port = 8000;
+ 
+const cookieParser = require('cookie-parser');
 console.log('1');
 
+app.use(express.urlencoded());
+
+// using the cookie parser
+app.use(cookieParser());
 const db = require('./config/mongoose');
 
 const expressLayouts = require('express-ejs-layouts');
 app.use(expressLayouts);// using express layouts
 
 app.set('layout extractStyles',true);//setting up the styles true for different pages
-app.set('layout extractScripts',true);//setting up the scripts true for different pages
+app.set('layout extractScripts',true);
+app.use(express.static('assets'));
+//setting up the scripts true for different pages
 //after doing the above mentioned , now we can use different sttic file in our layouts
 
 // acquiring controllers so that to use them in different cases
@@ -22,7 +30,6 @@ app.use(function(req,res,next){
     next();
 });
 //for acessing static files
-app.use(express.static('assets'));
 // // setting up the view engine
  app.set('view engine','ejs');
 app.set('views', './views');

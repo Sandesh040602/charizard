@@ -8,7 +8,11 @@ router.get('/',homeController.home);
 console.log('Router is up and exported.');
 
 router.use('/posts',require('./posts'));
-router.use('/user-profile',require('./user_profile'));
 
+router.use('/user',require('./user_profile'));
+
+// router.use('/signup',require('./signup'));
+
+router.use('/login',require('./login'));
 
 module.exports = router ;//exporting the router
