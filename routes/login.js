@@ -5,6 +5,7 @@ const router = express.Router();// setting up the router
 const signLogin = require('../controller/signup-login');
 
 router.use('/login',passport.notAuthentication,signLogin.login);
+router.get('/signout',signLogin.signout);
 
 
 router.use('/signup',passport.notAuthentication,signLogin.signup);

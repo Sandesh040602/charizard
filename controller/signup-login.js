@@ -17,3 +17,8 @@ module.exports.signup = function(req,res){
     });
     
 };
+// rendering the signup page
+module.exports.signout = function(req,res){
+    req.logout();
+    return res.redirect('/');
+};
