@@ -5,7 +5,15 @@ const port = 8000;
 const cookieParser = require('cookie-parser');
 console.log('1');
 
-app.use(express.urlencoded());
+
+
+app.use(express.urlencoded({extended:true}));
+
+// used for session cookie
+
+const passport = require('passport');
+const passportLocal = require('./config/passport-local-strategy');
+
 
 // using the cookie parser
 app.use(cookieParser());
@@ -29,14 +37,39 @@ app.use(function(req,res,next){
     console.log(req.body);
     next();
 });
+
+const session = require('express-session');
+const MongoStore = require('connect-mongo')(session);
 //for acessing static files
 // // setting up the view engine
  app.set('view engine','ejs');
 app.set('views', './views');
 
+app.use(session({
+    name: 'charizard',
+    // TODO change the scret before deployment on production mode
+    secret: 'blahsomething',
+    saveUninitialized: false,
+    resave: false,
+    cookie: {
+        maxAge: (1000 * 60 * 100)
+    },
+    store: new MongoStore({
+        mongooseConnection : db,
+        autoRemove: 'disabled'
+    },function(err){
+        console.log(err || 'no error is generated');
+    })
+}));
+
+app.use(passport.initialize());// telling to use passport
+app.use(passport.session());// to maintain sessions
+app.use(passport.setAuthenticatedUser);
+
+
 app.use('/',require('./routes/index'));// this is our link to the router which
 //ever link is generating will now go to routes/index.js
-console.log('2');
+;
 app.listen(port,function(err){
     if(err){console.log(`Error in running the server : ${err}`);
     }

@@ -31,6 +31,8 @@ module.exports.create = function(req,res){
 // after confirming in signin
 module.exports.createSession = function(req,res){
     //todo
+    console.log('redirect');
+    return res.redirect('/');
 }
 //sign in and log in is in signup-login.js in this
 // same directory little bit messy

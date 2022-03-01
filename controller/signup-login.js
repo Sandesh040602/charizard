@@ -3,7 +3,8 @@ const express = require('express');//requiring express
 
 // rendering the signin page
 module.exports.login = function(req,res){
-     res.render('login',{
+    console.log('Sign IN');
+    res.render('login',{
         title: 'LOGIN PAGE'
     });
     
