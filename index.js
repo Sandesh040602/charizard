@@ -6,6 +6,16 @@ const cookieParser = require('cookie-parser');
 console.log('1');
 
 
+const sassMiddleware = require('node-sass-middleware');
+
+
+app.use(sassMiddleware({
+    src: './assets/scss',
+    dest: './assets/css',
+    debug: true,
+    outputStyle: 'extended',
+    prefix: '/css',
+}));
 
 app.use(express.urlencoded({extended:true}));
 
@@ -13,7 +23,6 @@ app.use(express.urlencoded({extended:true}));
 
 const passport = require('passport');
 const passportLocal = require('./config/passport-local-strategy');
-
 
 // using the cookie parser
 app.use(cookieParser());
