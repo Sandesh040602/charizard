@@ -1,0 +1,9 @@
+a {
+  display: flex;
+  flex-direction: row;
+  width: 30vw;
+  height: 20px;
+  text-align: center;
+  color: white;
+  background: black;
+  font-family: Geneva, Tahoma, sans-serif; }

@@ -1,12 +1,12 @@
-header page
+<link rel="stylesheet" href="/css/header.css">
 <% if(locals.user){%>
-<a href="/user/">
+<a class="name" href="/user/">
     <%= user.name%>
 </a>
-    <a href="/login/signout">SIGN-OUT</a>
+    <a class="options" href="/login/signout">SIGN-OUT</a>
 <%}else{%>
-<a href="/login/login">SIGN-IN</a>
-<a href="/login/signup">SIGN-UP</a>
+<a class="options" href="/login/login">SIGN-IN</a>
+<a class="options" href="/login/signup">SIGN-UP</a>
 
 <%}%>
 

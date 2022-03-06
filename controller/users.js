@@ -5,7 +5,16 @@ module.exports.users = function(req,res){
 };
 
 const User = require('../models/user');
+const Posts = require('../models/post');
 
+module.exports.posts = function(req,res){
+    // req.body.hi = res.locals.user;
+    console.log(req.body);
+    Posts.create(req.body,function(err,user){
+        if(err){console.log('error in creating user while signing up'); return;}
+           return res.redirect('/');
+       })
+}
 // creating the new users
 module.exports.create = function(req,res){
     if(req.body.password != req.body.cpassword){
@@ -36,3 +45,5 @@ module.exports.createSession = function(req,res){
 }
 //sign in and log in is in signup-login.js in this
 // same directory little bit messy
+
+// when somebody posts
