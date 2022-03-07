@@ -7,7 +7,7 @@ const homeController = require('../controller/home');
 router.get('/',homeController.home);
 console.log('Router is up and exported.');
 
-router.use('/posts',require('./posts'));
+router.use('/post',require('./posts'));
 
 router.use('/user',require('./user_profile'));
 

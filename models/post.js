@@ -6,7 +6,7 @@ const postSchema = new mongoose.Schema({
         required: true
     },
     user: {
-        type: mongoose.Schema.Types.ObjectId,
+        type: mongoose.Schema.Types.ObjectId, // when you want to define _id as an type
         ref: 'User'// can be the Users
     }
 },{

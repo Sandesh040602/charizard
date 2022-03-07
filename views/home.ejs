@@ -3,9 +3,28 @@
 
 <section id="feedpost">
     <h4>Posts</h4>
-    <form action="/user/post" id="new-post-form" method="post">
+    <form action="/post/create" id="new-post-form" method="post">
         <textarea name="content" id="" cols="30" rows="3" placeholder="type here .."></textarea>
         <input type="submit" value="Post">
     </form>
+    <div>
+        <!-- showing all the items of the dataset -->
+    <% for(let i of post_list){%>
+        <div class="posts">
+       <p class="content-post">
+           <ul>
+               <p>new post</p>
+          <li><%=i.content%></li>
+          <li><%=i.user.name%></li> 
+          <li><%=i.user.email%></li>
+          <li><%=i.createdAt%></li>
+        </ul>
+           
+
+       </p>
+       
+        <%}%>
+        </div>
+
 </section>
 <!--  create controller and action for this form and mark the user -->

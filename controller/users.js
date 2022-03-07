@@ -7,6 +7,7 @@ module.exports.users = function(req,res){
 const User = require('../models/user');
 const Posts = require('../models/post');
 
+// post is merged in the posts database
 module.exports.posts = function(req,res){
     // req.body.hi = res.locals.user;
     console.log(req.body);

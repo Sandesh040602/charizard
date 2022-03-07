@@ -1,9 +1,10 @@
 const express = require('express');//requiring express
 const router = express.Router();// setting up the router 
+const passport = require('passport');
 
-const postsController = require('../controller/posts');
+const postsController = require('../controller/posts_controller');
 
-router.get('/',postsController.posts);
-console.log('Router is up and exported.');
+router.use('/create',passport.createAuthentication,postsController.create);
+console.log('posts router is up and exported.');
 
 module.exports = router ;//exporting the router
