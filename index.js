@@ -28,20 +28,26 @@ const passportLocal = require('./config/passport-local-strategy');
 app.use(cookieParser());
 const db = require('./config/mongoose');
 
+// using express layouts 
+//name of the file should only be layout.ejs otherwise wont work
 const expressLayouts = require('express-ejs-layouts');
-app.use(expressLayouts);// using express layouts
+app.use(expressLayouts);
 
-app.set('layout extractStyles',true);//setting up the styles true for different pages
+//setting up the styles true for different pages
+app.set('layout extractStyles',true);
 app.set('layout extractScripts',true);
 app.use(express.static('assets'));
 //setting up the scripts true for different pages
 //after doing the above mentioned , now we can use different sttic file in our layouts
 
 // acquiring controllers so that to use them in different cases
+
+
+// this will encode string to object value// merging the present directory with our views name 
+// // setting up the middle ware so be able to parse the code
 app.use(express.urlencoded({
     extended: true
-  }));// this will encode string to object value// merging the present directory with our views name 
-// // setting up the middle ware so be able to parse the code
+  }));
 app.use(function(req,res,next){
     console.log(req.body);
     next();
@@ -51,7 +57,7 @@ const session = require('express-session');
 const MongoStore = require('connect-mongo')(session);
 //for acessing static files
 // // setting up the view engine
- app.set('view engine','ejs');
+app.set('view engine','ejs');
 app.set('views', './views');
 
 app.use(session({
@@ -71,11 +77,13 @@ app.use(session({
     })
 }));
 
+
+// passport llocal auth is used
 app.use(passport.initialize());// telling to use passport
 app.use(passport.session());// to maintain sessions
 app.use(passport.setAuthenticatedUser);
 
-
+/* *********CONTROLLER**********  */
 app.use('/',require('./routes/index'));// this is our link to the router which
 //ever link is generating will now go to routes/index.js
 ;

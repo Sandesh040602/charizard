@@ -3,10 +3,12 @@
 
 <section id="feedpost">
     <h4>Posts</h4>
+    <% if(locals.user){%>
     <form action="/post/create" id="new-post-form" method="post">
         <textarea name="content" id="" cols="30" rows="3" placeholder="type here .."></textarea>
         <input type="submit" value="Post">
     </form>
+    <%}%>
     <div>
         <!-- showing all the items of the dataset -->
     <% for(let i of post_list){%>
@@ -15,13 +17,35 @@
            <ul>
                <p>new post</p>
           <li><%=i.content%></li>
-          <li><%=i.user.name%></li> 
-          <li><%=i.user.email%></li>
+          <!-- <li><%=i.user.name%></li> 
+          <li><%=i.user.email%></li> -->
           <li><%=i.createdAt%></li>
         </ul>
-           
-
        </p>
+       <div class="post-comments">
+           <%if(locals.user){%>
+            <form action="/comments/create" method="post" >
+                <input type="text" name="content" placeholder="comment here..">
+                <input type="hidden" name="post" value=<%=i._id%>>
+                <input type="submit" value="Add Comment">
+            </form>
+            <%}%>
+            <div class="post-comments-list">
+                <ul id="post-comments-<%= i._id%>">
+                    <% for(comment of i.comments){%>
+                    <p>
+                        <%= comment.content%>
+                        <br>
+                        <small>
+                            <%= comment.user.name%>
+                        </small>
+                    </p>
+                        <%}%>
+                </ul>
+            </div>
+        </div>
+           
+       
        
         <%}%>
         </div>

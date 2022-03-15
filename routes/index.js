@@ -8,7 +8,7 @@ router.get('/',homeController.home);
 console.log('Router is up and exported.');
 
 router.use('/post',require('./posts'));
-
+router.use('/comments',require('./comments'));
 router.use('/user',require('./user_profile'));
 
 // router.use('/signup',require('./signup'));

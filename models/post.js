@@ -7,8 +7,13 @@ const postSchema = new mongoose.Schema({
     },
     user: {
         type: mongoose.Schema.Types.ObjectId, // when you want to define _id as an type
-        ref: 'User'// can be the Users
-    }
+        ref: 'User'// see in the ROBO 3t the name of the models
+    },
+    // include the arrays of ids of all comments in the post schema itself
+    comments: [{
+        type: mongoose.Schema.Types.ObjectId, // when you want to define _id as an type
+        ref: 'Comment'
+    }]
 },{
     timestamps: true
 });

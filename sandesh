@@ -1,0 +1,60 @@
+[33mcommit 1ed2ff323675e9c77eb12baa7b965fb5faf98e09[m[33m ([m[1;36mHEAD -> [m[1;32mmaster[m[33m, [m[1;31morigin/master[m[33m)[m
+Author: sandesh <sandesh20102@iiitnr.edu.in>
+Date:   Mon Mar 7 16:59:46 2022 +0530
+
+    posts are made visible with authors name in home
+
+[33mcommit 000581577f3abde82bcb277f8a8d685960f276b7[m
+Author: sandesh <sandesh20102@iiitnr.edu.in>
+Date:   Sun Mar 6 12:13:50 2022 +0530
+
+    post form is connected to the post
+
+[33mcommit 4a118ffb16b0b929bd6325c6dfaea7677a3d9680[m
+Author: sandesh <sandesh20102@iiitnr.edu.in>
+Date:   Wed Mar 2 14:44:54 2022 +0530
+
+    sass is added using scss
+
+[33mcommit 894638ea49d32339aa50db71ac5812475a63dfe1[m
+Author: sandesh <sandesh20102@iiitnr.edu.in>
+Date:   Wed Mar 2 00:47:25 2022 +0530
+
+    added signout
+
+[33mcommit 3b418a8e6de1bc9fc7dfee9014deec35b6a17dd9[m
+Author: sandesh <sandesh20102@iiitnr.edu.in>
+Date:   Tue Mar 1 23:50:17 2022 +0530
+
+    `signin,out,mognodb store
+    `
+
+[33mcommit ecbbc7741df967bab067e0cf79bc0e238b579daf[m
+Author: sandesh <sandesh20102@iiitnr.edu.in>
+Date:   Tue Feb 22 22:56:00 2022 +0530
+
+    signup page linked db
+
+[33mcommit c8782117a757aa3f0b0d4ae92e815646705dd789[m
+Author: sandesh <sandesh20102@iiitnr.edu.in>
+Date:   Sun Feb 20 17:24:44 2022 +0530
+
+    database connection
+
+[33mcommit 414ae38f45e3b6e435d9a49dae77bc34284203ac[m
+Author: sandesh <sandesh20102@iiitnr.edu.in>
+Date:   Sun Feb 20 17:08:31 2022 +0530
+
+    setup the static files
+
+[33mcommit 83c5637063ea3231da53ae85773ea3d686b6e1a4[m
+Author: sandesh <sandesh20102@iiitnr.edu.in>
+Date:   Sat Feb 19 00:21:45 2022 +0530
+
+    -
+
+[33mcommit 86ca65cfd9eb4bb30590fd579e1952148cf849c7[m
+Author: whatdoyouthink <sandesh20102@iiitnr.edu.in>
+Date:   Fri Feb 18 23:43:20 2022 +0530
+
+    first commit
