@@ -1,4 +1,5 @@
 const Posts = require('../models/post');
+const Comment = require('../models/comments');
 
 // post is merged in the posts database
 module.exports.create = function(req,res){
@@ -14,4 +15,20 @@ module.exports.create = function(req,res){
             }
             return res.redirect('/');
         });
+}
+
+module.exports.destroy = function(req,res){
+    Posts.findById(req.params.id,function(err,post){
+        //.id means converting the object id into string
+        if(post.user == req.user.id){
+            post.remove();
+
+            Comment.deleteMany({post: req.params.id},function(err){
+                return res.redirect('back');
+            });
+        }else{
+            return res.redirect('back');
+        }
+
+    });
 }

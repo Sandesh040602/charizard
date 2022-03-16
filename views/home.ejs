@@ -12,10 +12,16 @@
     <div>
         <!-- showing all the items of the dataset -->
     <% for(let i of post_list){%>
-        <div class="posts">
+    <div class="posts">
        <p class="content-post">
            <ul>
-               <p>new post</p>
+            <p>new post</p>
+          <% if(locals.user &&(locals.user.id == i.user.id)){%>
+            <small>
+                <a href="/post/destroy/<%= i.id%>">W</a>
+            </small>
+            <%}%>
+            </small>
           <li><%=i.content%></li>
           <!-- <li><%=i.user.name%></li> 
           <li><%=i.user.email%></li> -->
@@ -48,7 +54,7 @@
        
        
         <%}%>
-        </div>
+    </div>
 
 </section>
 <!--  create controller and action for this form and mark the user -->
