@@ -11,55 +11,7 @@
     <%}%>
     <div>
         <!-- showing all the items of the dataset -->
-    <% for(let i of post_list){%>
-    <div class="posts">
-       <p class="content-post">
-           <ul>
-            <p>new post</p>
-          <% if(locals.user &&(locals.user.id == i.user.id)){%>
-            <small>
-                <a href="/post/destroy/<%= i.id%>">W</a>
-            </small>
-            <%}%>
-            </small>
-          <li><%=i.content%></li>
-          <li><%=i.user.name%></li> 
-          <li><%=i.user.email%></li>
-          <li><%=i.createdAt%></li>
-        </ul>
-       </p>
-       <div class="post-comments">
-           <%if(locals.user){%>
-            <form action="/comments/create" method="post" >
-                <input type="text" name="content" placeholder="comment here..">
-                <input type="hidden" name="post" value=<%=i._id%>>
-                <input type="submit" value="Add Comment">
-            </form>
-            <%}%>
-            <div class="post-comments-list">
-                <ul id="post-comments-<%= i._id%>">
-                    <% for(comment of i.comments){%>
-                    <p>
-                        <% if(locals.user &&(locals.user.id == comment.user.id)){%>
-                            <small>
-                                <a href="/comments/destroy/<%= comment.id%>">W</a>
-                            </small>
-                            <%}%>
-                            this is the comment
-                        <%= comment.content%>
-                        <br>
-                        <small>
-                            <%= comment.user.name%>
-                        </small>
-                    </p>
-                        <%}%>
-                </ul>
-            </div>
-        </div>
-           
-       
-       
-        <%}%>
+    <%- include('_post')-%>
     </div>
 
 </section>
