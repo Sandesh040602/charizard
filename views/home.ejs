@@ -23,8 +23,8 @@
             <%}%>
             </small>
           <li><%=i.content%></li>
-          <!-- <li><%=i.user.name%></li> 
-          <li><%=i.user.email%></li> -->
+          <li><%=i.user.name%></li> 
+          <li><%=i.user.email%></li>
           <li><%=i.createdAt%></li>
         </ul>
        </p>
@@ -40,6 +40,12 @@
                 <ul id="post-comments-<%= i._id%>">
                     <% for(comment of i.comments){%>
                     <p>
+                        <% if(locals.user &&(locals.user.id == comment.user.id)){%>
+                            <small>
+                                <a href="/comments/destroy/<%= comment.id%>">W</a>
+                            </small>
+                            <%}%>
+                            this is the comment
                         <%= comment.content%>
                         <br>
                         <small>

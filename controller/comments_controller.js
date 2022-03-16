@@ -1,5 +1,7 @@
+const { redirect } = require('express/lib/response');
 const Comment = require('../models/comments');
 const Post = require('../models/post');
+const { post } = require('../routes/posts');
 
 //creating a comment
 module.exports.create = function(req,res){
@@ -18,6 +20,24 @@ module.exports.create = function(req,res){
                 post.save();//everytime we have to update we have to call .save()
                 res.redirect('/');
             });
+        }
+    });
+}
+
+module.exports.destroy = function(req,res){
+    Comment.findById(req.params.id, function(err,comment){
+
+        if(comment.user==req.user.id){
+
+            // we have to first delete comment in the related post otherwise we can't do it later
+            let postId = comment.post;
+            comment.remove();
+            Post.findByIdAndUpdate(postId, {$pull: {comments: req.params.id}}, function(err,post){
+                return res.redirect('back');
+            }); 
+        }else{
+            return res.redirect('back');
+
         }
     });
 }
