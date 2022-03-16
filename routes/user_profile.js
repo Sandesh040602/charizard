@@ -4,7 +4,7 @@ const passport = require('passport');
 
 const userController = require('../controller/users');
 
-router.get('/',passport.createAuthentication,userController.users);
+router.get('/profile/:id',passport.createAuthentication,userController.users);
 
 router.post('/create',userController.create);
 console.log('Router is up and exported.');

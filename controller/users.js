@@ -1,10 +1,16 @@
+const User = require('../models/user');
+
 module.exports.users = function(req,res){
-    res.render('user',{
-        title: 'usehirs'
+    User.findById(req.params.id, function(err,user){
+        res.render('user',{
+        title: 'usehirs',
+        profile_user: user
     });
+    })
+    
 };
 
-const User = require('../models/user');
+// const User = require('../models/user');
 const Posts = require('../models/post');
 
 // post is merged in the posts database

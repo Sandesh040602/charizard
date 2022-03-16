@@ -40,14 +40,13 @@ module.exports.home = function(req,res){
         .exec(
         function(err,result){
             if(err){console.log('their is an error:', err);}
-            // console.log("results");
-            // console.log(result);
-            // we have to sent user details also
-            return res.render('home',{
+            User.find({}, function(err,users){
+                return res.render('home',{
                 title: 'home is the best',
-                post_list: result
+                post_list: result,
+                all_users: users
             });
-
+        });
 
         })
     
@@ -75,13 +74,17 @@ module.exports.home2 = function(req,res){
         .populate('comments')
         .exec(
         function(err,result){
+
             if(err){console.log('their is an error:', err);}
-            
-            // we have to sent user details also
-            return res.render('home',{
+            User.find({}, function(err,users){
+                return res.render('home',{
                 title: 'home is the best',
-                post_list: result
+                post_list: result,
+                all_users: users
             });
+            });
+            // we have to sent user details also
+            
 
 
         })
