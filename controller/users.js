@@ -10,8 +10,20 @@ module.exports.users = function(req,res){
     
 };
 
+module.exports.update = function(req,res){
+    if(req.params.id == req.user.id){
+        User.findByIdAndUpdate(req.params.id, req.body, function(err,user){
+            return res.redirect('/');
+        })
+    }
+    else{
+        res.status(401).send('Unauthorizaed');
+    }
+}
+
 // const User = require('../models/user');
 const Posts = require('../models/post');
+const { localsName } = require('ejs');
 
 // post is merged in the posts database
 module.exports.posts = function(req,res){

@@ -1,2 +1,13 @@
 body {
   background-image: linear-gradient(60deg, green, brown, pink); }
+
+#home-container {
+  display: flex; }
+  #home-container #feedpost {
+    width: 70%;
+    padding: 10px; }
+  #home-container #user-friends {
+    width: 30%;
+    padding: 10px;
+    border-left: 1px solid lightgrey;
+    height: 100%; }
