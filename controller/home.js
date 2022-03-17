@@ -40,7 +40,7 @@ module.exports.home = async function(req,res){
         });
 
     let users = await User.find({}); 
-
+    req.flash('success','home is displayed ');
     return res.render('home',{
         title: 'home is the best',
         post_list: result,
@@ -48,6 +48,7 @@ module.exports.home = async function(req,res){
     });
     }
     catch(err){
+    req.flash('error','home is not displayed ');
         console.log('Error',err);
         return ;
     }

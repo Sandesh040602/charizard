@@ -1,10 +1,10 @@
 const express = require('express');// requiring express to make the files as scattered as possible
 const app = express();
 const port = 8000;
- 
+const flash = require('connect-flash');
 const cookieParser = require('cookie-parser');
 console.log('1');
-
+const customMware = require('./config/middleware');
 
 const sassMiddleware = require('node-sass-middleware');
 
@@ -83,6 +83,9 @@ app.use(passport.initialize());// telling to use passport
 app.use(passport.session());// to maintain sessions
 app.use(passport.setAuthenticatedUser);
 
+// flash uses session cookies so we should use it after session creation
+app.use(flash());
+app.use(customMware.setFlash);
 /* *********CONTROLLER**********  */
 app.use('/',require('./routes/index'));// this is our link to the router which
 //ever link is generating will now go to routes/index.js

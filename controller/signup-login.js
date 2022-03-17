@@ -16,6 +16,7 @@ module.exports.login = async function(req,res){
 // rendering the signup page
 module.exports.signup = async function(req,res){
     try{
+    req.flash('success','Logged in successfully');
         return res.render('signup',{
         title: 'SIGNUP'
     });
@@ -28,6 +29,7 @@ catch(err){
 // rendering the signup page
 module.exports.signout = async function(req,res){
     try{req.logout();
+    req.flash('success','Logged out successfully');
     return res.redirect('/');}
     catch(err){
         console.log('error in signout',err);
