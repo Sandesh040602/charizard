@@ -11,7 +11,7 @@ const Comments = require('../models/comments');
 
 
 
-module.exports.home = function(req,res){
+module.exports.home = async function(req,res){
     console.log(req.cookies);
     // res.cookie('lt',96);
     
@@ -29,65 +29,30 @@ module.exports.home = function(req,res){
 
     // populating the user and comment feild
 
-    Posts.find({})
+    try{
+        let result = await Posts.find({})
         .populate('user')
         .populate({
             path: 'comments',
             populate: {
                 path: 'user'
             }
-        })
-        .exec(
-        function(err,result){
-            if(err){console.log('their is an error:', err);}
-            User.find({}, function(err,users){
-                return res.render('home',{
-                title: 'home is the best',
-                post_list: result,
-                all_users: users
-            });
         });
 
-        })
-    
-    
+    let users = await User.find({}); 
+
+    return res.render('home',{
+        title: 'home is the best',
+        post_list: result,
+        all_users: users
+    });
+    }
+    catch(err){
+        console.log('Error',err);
+        return ;
+    }
 };
 
-module.exports.home2 = function(req,res){
-    console.log(req.cookies);
-    // res.cookie('lt',96);
-    
-        // function(err,post){
-        //     if(err){console.log('their is an error:', err);}
-            
-        //     // we have to sent user details also
-        //     return res.render('home',{
-        //         title: 'home is the best',
-        //         post_list: post
-        //     })
-
-
-        // })
-
-    Posts.find({})
-        // .populate('user')
-        .populate('comments')
-        .exec(
-        function(err,result){
-
-            if(err){console.log('their is an error:', err);}
-            User.find({}, function(err,users){
-                return res.render('home',{
-                title: 'home is the best',
-                post_list: result,
-                all_users: users
-            });
-            });
-            // we have to sent user details also
-            
-
-
-        })
     
     
-};
+

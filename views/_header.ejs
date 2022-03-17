@@ -1,6 +1,6 @@
 <link rel="stylesheet" href="/css/header.css">
 <% if(locals.user){%>
-<a class="name" href="/user/">
+<a class="name" href="/user/profile/<%=user.id%>">
     <%= user.name%>
 </a>
     <a class="options" href="/login/signout">SIGN-OUT</a>
