@@ -3,13 +3,27 @@ const Comment = require('../models/comments');
 
 // post is merged in the posts database
 module.exports.create = async function(req,res){
-    try{
-        let post = await Posts.create({
-        content: req.body.content,
-        user: req.user._id});
-        req.flash('success','post published');
-        return res.redirect('/');
-    }
+    // console.log("hi");
+    try {
+        let post = await Post.create({
+          content: req.body.content,
+          user: req.user._id,
+        })
+    
+        post.user = await User.findById(post.user).select("-password")
+        // password should be removed
+        if (req.xhr) {
+            console.log("ok");
+          return res.status('200').json({
+            data: {
+              post: post,
+            },
+            message: 'Post Created',
+          })
+        }
+        req.flash('success', 'New Post Added')
+        return res.redirect('back')
+      }
      catch(err){
         req.flash('error','post not published');
          return res.redirect('back');

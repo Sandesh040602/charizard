@@ -71,7 +71,7 @@ passport.notAuthentication = function(req,res,next){
 // if logged in the pass info about it to the views as we know that all info related to them is stored at locals
 passport.setAuthenticatedUser = function(req,res,next){
     if(req.isAuthenticated()){
-        res.locals.user = req.user;
+        res.locals.user = req.user; // here we are establishing the user everytime he comes
         // console.log(req.user);
     }
     next();
